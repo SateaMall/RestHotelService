@@ -15,6 +15,7 @@
     <table class="table table-hover table-dark">
         <tr>
             <th>Hotel</th>
+            <th>Agence</th>
             <th>etoile</th>
             <th>Capacite</th>
             <th>Prix</th>
@@ -25,6 +26,7 @@
         </tr>
         <tr th:each="offre : ${offres}">
             <td th:text="${offre.nomHotel}"></td>
+            <td th:text="${offre.nomAgence}"></td>
             <td th:text="${offre.etoileHotel}"></td>
             <td th:text="${offre.capacite}"></td>
             <td th:text="${offre.prix}"></td>

@@ -24,6 +24,7 @@ public class Offre {
 	private Long hotelId;
 	private String nomHotel;
 	private int etoileHotel;
+	private long agenceId;
 
 	public String getVille() {
 		return ville;
@@ -32,7 +33,7 @@ public class Offre {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-
+	private String nomAgence;
 	private String ville;
 	@Column(name = "image", length = 10000000)
 	private String image;
@@ -117,5 +118,15 @@ public class Offre {
 	public void setNomHotel(String nomHotel) {this.nomHotel = nomHotel;}
 	public int getEtoileHotel() {return etoileHotel;}
 	public void setEtoileHotel(int etoileHotel) {this.etoileHotel = etoileHotel;}
+	public long getAgenceId(){return agenceId;}
+	public void setAgenceId(long agenceId){this.agenceId=agenceId;}
+	public String getNomAgence() {
+		return nomAgence;
+	}
+
+	public void setNomAgence(String nomAgence) {
+		this.nomAgence = nomAgence;
+	}
+
 
 }

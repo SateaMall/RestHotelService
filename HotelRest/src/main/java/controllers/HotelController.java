@@ -86,6 +86,7 @@ public class HotelController {
             Orepository.deleteById(offre.getId());
             return reservation.getId();
         } catch (Exception e) {
+            e.printStackTrace();
             return -1;
         }
     }

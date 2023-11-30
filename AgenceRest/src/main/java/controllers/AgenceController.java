@@ -35,6 +35,26 @@ public class AgenceController {
 
 
     /************** Service 1 ************/
+    @GetMapping("/api/comparable")
+    public List<Offre> comparable(@RequestParam LocalDate dateDebut,
+                                  @RequestParam LocalDate dateFin,
+                                  @RequestParam int nombrePersonnes,
+                                  @RequestParam String ville,
+                                  @RequestParam int etoile) throws JsonProcessingException {
+        List <Offre> offres = invokeOffres(dateDebut,dateFin,nombrePersonnes);
+        List <Offre> offreFiltre = new ArrayList<>();
+        for (Offre offre: offres){
+            if(offre.getVille().equalsIgnoreCase(ville)&&offre.getEtoileHotel()>=etoile){
+                offreFiltre.add(offre);
+                offre.setPrix(agence.reducPrix(offre.getPrix()));
+                offre.setNomAgence(agence.getNom());
+                offre.setAgenceId(agence.getId());
+            }
+        }
+        Orepository.saveAll(offreFiltre);
+        return offreFiltre; //control the info sent OR not
+    }
+
 //Test : http://localhost:8081/AgenceService/api/comparable?dateDebut=2023-01-01&dateFin=2023-01-10&nombrePersonnes=5&ville=cologne&etoile=4
     public List<Offre> invokeOffres(LocalDate dateDebut, LocalDate dateFin, int nbrPersonne) throws JsonProcessingException {
         agence =Arepository.getReferenceById(0L);
@@ -57,23 +77,7 @@ public class AgenceController {
         }
         return offres;
     }
-    @GetMapping("/api/comparable")
-    public List<Offre> comparable(@RequestParam LocalDate dateDebut,
-                                  @RequestParam LocalDate dateFin,
-                                  @RequestParam int nombrePersonnes,
-                                  @RequestParam String ville,
-                                  @RequestParam int etoile) throws JsonProcessingException {
-        List <Offre> offres = invokeOffres(dateDebut,dateFin,nombrePersonnes);
-        List <Offre> offreFiltre = new ArrayList<>();
-        for (Offre offre: offres){
-            if(offre.getVille().equalsIgnoreCase(ville)&&offre.getEtoileHotel()>=etoile){
-                offreFiltre.add(offre);
-                offre.setPrix(agence.reducPrix(offre.getPrix()));
-            }
-        }
-        Orepository.saveAll(offreFiltre);
-        return offreFiltre; //control the info sent OR not
-    }
+
 
     /************** Service 2 ************/
     //Test:http://localhost:8081/AgenceService/api/reserver?offreId=1&nomClient=ALMALLOUHI&prenomClient=Satea&portable=0753406179&creditCard=654233541

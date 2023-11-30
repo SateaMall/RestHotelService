@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 public class Agence {
     @Id
-    @GeneratedValue
     int id;
     private String nom;
     private String S1;
@@ -19,7 +18,8 @@ public class Agence {
 
 
 
-    public Agence(String nom, String S1, String S2) {
+    public Agence(String nom,int id, String S1, String S2) {
+        this.id=id;
         this.nom = nom;
         this.S1=S1;
         this.S2=S2;

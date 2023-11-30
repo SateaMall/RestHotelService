@@ -26,8 +26,8 @@ public class Offre {
 	private Long hotelId;
 	private String nomHotel;
 	private int etoileHotel;
-
-
+	private long agenceId;
+	private String nomAgence;
 	private String ville;
 	@Column(name = "image", length = 10000000)
 	private String image;
@@ -35,6 +35,8 @@ public class Offre {
 	
 	/*  CONSTRUCTOR  */
 	public Offre(int capacite, LocalDate date_arrive, LocalDate date_depart, double prix, Long chambreId, Long hotelId, String image, int etoileHotel, String nomHotel, String ville) {
+		setNomAgence("");
+		setAgenceId(-1);
 		setImage(image);
 		setCapacite(capacite);
 		setDate_arrive(date_arrive);
@@ -62,7 +64,9 @@ public class Offre {
 	public int hashCode() {
 		return Objects.hash(id, capacite, prix, date_arrive, date_depart, chambreId, hotelId, nomHotel, etoileHotel, image);
 	}
-	
+
+	public long getAgenceId(){return agenceId;}
+	public void setAgenceId(long agenceId){this.agenceId=agenceId;}
 	public Long getHotelId() {
 		return hotelId;
 	}
@@ -116,4 +120,11 @@ public class Offre {
 	public String getVille() {return ville;}
 	public void setVille(String ville) {this.ville = ville;}
 
+	public String getNomAgence() {
+		return nomAgence;
+	}
+
+	public void setNomAgence(String nomAgence) {
+		this.nomAgence = nomAgence;
+	}
 }
