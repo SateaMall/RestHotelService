@@ -24,14 +24,14 @@ public class HotelData {
 
     @Bean
     public CommandLineRunner initDatabaseAdresse(AdresseRepository repository){
-        adresse = new Adresse("Germany", "Cologne", "570 Route de Ganges", "Hotel de 4 seisons","654654,65465 654654,654654 ", 34090);
+        adresse = new Adresse("Allemagne", "Cologne", "Corniche El Manara", "Riviera","6546554,654665 6546654,6544654 ", 1109);
         return args -> {
             logger.info("preloading database with " + repository.save(adresse));
         };
     }
     @Bean
     public CommandLineRunner initDatabaseHotel(HotelRepository repository){
-        hotel = new Hotel("4 Seasons", "Lux",5, adresse,1L);
+        hotel = new Hotel("Riviera", "Lux",3, adresse,0L);
         return args -> {
             logger.info("preloading database with " + repository.save(hotel));
         };
@@ -39,28 +39,32 @@ public class HotelData {
     @Bean
     public CommandLineRunner initDatabaseChambre(ChambreRepository repository) throws IOException {
         chambres = new ArrayList<Chambre>();
-        String badHotel="Photos/badHotel.jpg";
-        String mediumHotel="Photos/mediumHotel.jpg";
-        String goodHotel="Photos/goodHotel.jpg";
-        Chambre c1= new Chambre (1, 4, 1000, hotel,goodHotel);  hotel.addChambre(c1);
+
+        String woodB="Photos/woodB.jpg";
+        String CheapB="Photos/CheapB.jpg";
+        String redB="Photos/redB.jpg";
+        String AlienB="Photos/AlienB.jpg";
+        String ParisB="Photos/ParisB.jpg";
+        String normalB="Photos/normalB.jpg";
+        Chambre c1= new Chambre (1, 4, 1500, hotel,woodB);  hotel.addChambre(c1);
         chambres.add(c1);
-        Chambre c2= new Chambre (2, 4, 1000,  hotel,goodHotel); hotel.addChambre(c2);
+        Chambre c2= new Chambre (2, 4, 1500,  hotel,CheapB); hotel.addChambre(c2);
         chambres.add(c2);
-        Chambre c4= new Chambre (4, 2, 200,  hotel,mediumHotel); hotel.addChambre(c4);
+        Chambre c4= new Chambre (4, 2, 500,  hotel,redB); hotel.addChambre(c4);
         chambres.add(c4);
-        Chambre c5= new Chambre (5, 2, 200,  hotel,mediumHotel); hotel.addChambre(c5);
+        Chambre c5= new Chambre (5, 2, 500,  hotel,AlienB); hotel.addChambre(c5);
         chambres.add(c5);
-        Chambre c6= new Chambre (6, 1, 150,  hotel,badHotel); hotel.addChambre(c6);
-        chambres.add(c6);
-        Chambre c7= new Chambre (7, 1, 150,  hotel,badHotel); hotel.addChambre(c7);
-        chambres.add(c7);
+        Chambre c8= new Chambre (8, 1, 850,  hotel,ParisB); hotel.addChambre(c8);
+        chambres.add(c8);
+        Chambre c10=new Chambre (10,1, 850,  hotel,normalB); hotel.addChambre(c10);
+        chambres.add(c10);
         return args -> {
             logger.info("preloading database with " + repository.save(c1));
             logger.info("preloading database with " + repository.save(c2));
             logger.info("preloading database with " + repository.save(c4));
             logger.info("preloading database with " + repository.save(c5));
-            logger.info("preloading database with " + repository.save(c6));
-            logger.info("preloading database with " + repository.save(c7));
+            logger.info("preloading database with " + repository.save(c8));
+            logger.info("preloading database with " + repository.save(c10));
         };
     }
 
@@ -71,29 +75,7 @@ public class HotelData {
             logger.info("preloading database with " + repository.save(client));
         };
     }
-    @Bean
-    public CommandLineRunner initDatabaseReservation(ReservationRepository repository){
 
-        Reservation r1 = new Reservation( LocalDate.of(2023, 11, 1), LocalDate.of(2023, 11, 5),    chambres.get(0),  client);
-        Reservation r2 = new Reservation( LocalDate.of(2023, 11, 6), LocalDate.of(2023, 11, 10),    chambres.get(0),  client);
-        Reservation r3 = new Reservation( LocalDate.of(2023, 11, 11), LocalDate.of(2023, 11, 15),    chambres.get(3),  client);
-        Reservation r4 = new Reservation( LocalDate.of(2023, 11, 16), LocalDate.of(2023, 11, 20),    chambres.get(3),  client);
-        Reservation r5 = new Reservation( LocalDate.of(2023, 11, 21), LocalDate.of(2023, 11, 25),    chambres.get(3),  client);
-
-        chambres.get(3).addReservation(r1);
-        chambres.get(3).addReservation(r2);
-        chambres.get(3).addReservation(r3);
-        chambres.get(1).addReservation(r4);
-        chambres.get(1).addReservation(r5);
-
-        return args -> {
-            logger.info("preloading database with " + repository.save(r1));
-            logger.info("preloading database with " + repository.save(r2));
-            logger.info("preloading database with " + repository.save(r3));
-            logger.info("preloading database with " + repository.save(r4));
-            logger.info("preloading database with " + repository.save(r5));
-        };
-    }
 @Bean
     public CommandLineRunner initDatabaseAgence(AgenceRepository repository) {
         Agence agence =  new  Agence("Elbat", 0L, "0000",hotel);

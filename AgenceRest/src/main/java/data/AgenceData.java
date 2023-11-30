@@ -33,10 +33,14 @@ public class AgenceData {
     @Bean
     public CommandLineRunner initDatabaseHotel(HotelRepository repository){
         Hotel hotel = new Hotel("4Seasons", "http://localhost:9000/Hotelservice/api/disponibilites?","http://localhost:9000/Hotelservice/api/reserver?");
+        Hotel hotel1 = new Hotel("Riviera", "http://localhost:9001/Hotelservice/api/disponibilites?","http://localhost:9001/Hotelservice/api/reserver?");
         agence.addhotel(hotel);
+        agence.addhotel(hotel1);
         hotel.setAgence(agence);
+        hotel1.setAgence(agence);
         return args -> {
             logger.info("preloading database with " + repository.save(hotel));
+            logger.info("preloading database with " + repository.save(hotel1));
         };
     }
 

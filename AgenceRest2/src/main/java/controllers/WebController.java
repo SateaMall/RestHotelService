@@ -127,7 +127,7 @@ public class WebController {
         for (Offre offre: offres){
             if(offre.getVille().equalsIgnoreCase(ville)&&offre.getEtoileHotel()>=etoile){
                 offreFiltre.add(offre);
-                offre.setPrix(agence.reducPrix(offre.getPrix()));
+                offre.setPrix(Math.round(agence.reducPrix(offre.getPrix())*100.0)/100.0);
             }
         }
         Orepository.saveAll(offreFiltre);
