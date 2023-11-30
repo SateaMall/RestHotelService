@@ -26,7 +26,8 @@ public class AppData {
 
 
         return args -> {
-            logger.info("preloading database with " + repository.save(new Agence("ElBat",0, "http://localhost:8081/AgenceService/api/comparable?","http://localhost:8081/AgenceService/api/reserver?")));
+            logger.info("preloading database with " + repository.save(new Agence("ElBat",0, "http://localhost:8000/AgenceService/api/comparable?","http://localhost:8000/AgenceService/api/reserver?")));
+            logger.info("preloading database with " + repository.save(new Agence("Chaipa",1, "http://localhost:8001/AgenceService/api/comparable?","http://localhost:8001/AgenceService/api/reserver?")));
         };
     }
 

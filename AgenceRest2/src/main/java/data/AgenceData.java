@@ -24,7 +24,7 @@ public class AgenceData {
 
     @Bean
     public CommandLineRunner initDatabaseAgence(AgenceRepository repository){
-        agence= new Agence("ElBat", 10,0, "0000");
+        agence= new Agence("Chaipas", 30,1, "0000");
 
         return args -> {
             logger.info("preloading database with " + repository.save(agence));

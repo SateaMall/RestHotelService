@@ -108,11 +108,14 @@ public class HotelData {
     }
 @Bean
     public CommandLineRunner initDatabaseAgence(AgenceRepository repository) {
-        Agence agence =  new  Agence("Sham", 0L, "0000",hotel);
+        Agence agence =  new  Agence("Elbat", 0L, "0000",hotel);
+        Agence agence1 =  new  Agence("Chepas", 1L, "0000",hotel);
 
         return args -> {
             logger.info("preloading database with " + repository.save(agence));
+            logger.info("preloading database with " + repository.save(agence1));
             hotel.addAgences(agence);
+            hotel.addAgences(agence1);
         };
     }
 

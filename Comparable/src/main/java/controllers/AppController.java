@@ -47,6 +47,10 @@ public class AppController {
                                  Model model,
                                  RedirectAttributes redirectAttributes) throws JsonProcessingException {
         System.out.println( "afficherOffres!");
+        if(dateDebut.isAfter(dateFin) || dateDebut.isBefore(LocalDate.now())){
+            redirectAttributes.addFlashAttribute("error", "Date is invalid");
+            return "redirect:/Accueil";
+        }
         List<Offre> offres =  comparable(dateDebut,dateFin,nombrePersonnes,ville,etoile);
         redirectAttributes.addFlashAttribute("offres", offres);
         return "redirect:/AfficherOffres";
