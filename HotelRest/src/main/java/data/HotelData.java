@@ -42,15 +42,19 @@ public class HotelData {
         String badHotel="Photos/badHotel.jpg";
         String mediumHotel="Photos/mediumHotel.jpg";
         String goodHotel="Photos/goodHotel.jpg";
-        Chambre c1= new Chambre (1, 4, 1000, hotel,goodHotel);  hotel.addChambre(c1);
+        String one="Photos/.jpg";
+        String two="Photos/two.jpg";
+        String three="Photos/three.jpg";
+
+        Chambre c1= new Chambre (1, 4, 1000, hotel,one);  hotel.addChambre(c1);
         chambres.add(c1);
         Chambre c2= new Chambre (2, 4, 1000,  hotel,goodHotel); hotel.addChambre(c2);
         chambres.add(c2);
-        Chambre c4= new Chambre (4, 2, 200,  hotel,mediumHotel); hotel.addChambre(c4);
+        Chambre c4= new Chambre (4, 2, 200,  hotel,two); hotel.addChambre(c4);
         chambres.add(c4);
         Chambre c5= new Chambre (5, 2, 200,  hotel,mediumHotel); hotel.addChambre(c5);
         chambres.add(c5);
-        Chambre c6= new Chambre (6, 1, 150,  hotel,badHotel); hotel.addChambre(c6);
+        Chambre c6= new Chambre (6, 1, 150,  hotel,three); hotel.addChambre(c6);
         chambres.add(c6);
         Chambre c7= new Chambre (7, 1, 150,  hotel,badHotel); hotel.addChambre(c7);
         chambres.add(c7);
