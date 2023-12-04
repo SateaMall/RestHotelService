@@ -42,7 +42,7 @@ public class HotelData {
         String badHotel="Photos/badHotel.jpg";
         String mediumHotel="Photos/mediumHotel.jpg";
         String goodHotel="Photos/goodHotel.jpg";
-        String one="Photos/.jpg";
+        String one="Photos/one.jpg";
         String two="Photos/two.jpg";
         String three="Photos/three.jpg";
 

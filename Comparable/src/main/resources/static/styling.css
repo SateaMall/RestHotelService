@@ -17,7 +17,7 @@ body {
 
 /* Styling the main container */
 form {
-    background: white;
+    background: rgba(241, 240, 240, 0.75);
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Soft shadow for depth */
