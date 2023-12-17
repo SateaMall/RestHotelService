@@ -37,7 +37,7 @@ public class WebController {
     @GetMapping("/Accueil") //Afficher la page accueil
     public String getPreferences( Model model) {
         System.out.println( "getPreferences!");
-        agence =Arepository.getReferenceById(0L);
+        agence =Arepository.getReferenceById(1L);
         model.addAttribute("agence",agence );
         return "Accueil";
     }
@@ -100,7 +100,7 @@ public class WebController {
 
     /************** METHODES TO USE  ************/
     public List<Offre> invokeOffres(LocalDate dateDebut, LocalDate dateFin, int nbrPersonne) throws JsonProcessingException {
-        agence =Arepository.getReferenceById(0L);
+        agence =Arepository.getReferenceById(1L);
         List<Hotel> hotels = Hrepository.findAll();
         List<Offre> offres= new ArrayList<>();
         for(Hotel hotel: hotels) {
