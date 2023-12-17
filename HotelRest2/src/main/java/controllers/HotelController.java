@@ -114,7 +114,7 @@ public class HotelController {
         }
         return false;
     }
-    public static boolean  dateValide(Chambre c, LocalDate dep, LocalDate arv) {
+    public static boolean  dateValide(Chambre c,  LocalDate arv, LocalDate dep) {
         for (Reservation r: c.getReservations()){
             if(r.dateOverlap(dep,arv)){
                 return false;

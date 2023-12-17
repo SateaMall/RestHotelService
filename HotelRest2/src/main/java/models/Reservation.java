@@ -33,10 +33,7 @@ public class Reservation {
 		/* METHODES */
 		public boolean dateOverlap(LocalDate dep, LocalDate arv) {
 			Reservation r1 = this;
-			return (arv.isAfter(r1.date_arrive) && arv.isBefore(r1.date_depart)) ||  // New arrival is during the existing reservation
-					(dep.isAfter(r1.date_arrive) && dep.isBefore(r1.date_depart)) ||  // New departure is during the existing reservation
-					(arv.isBefore(r1.date_arrive) && dep.isAfter(r1.date_depart)) ||  // New reservation completely overlaps existing reservation
-					(arv.isAfter(r1.date_arrive) && dep.isBefore(r1.date_depart)); // Existing reservation is within new reservation dates
+			return (arv.isBefore(r1.date_depart) || arv.isEqual(r1.date_depart)) && (dep.isAfter(r1.date_arrive) || dep.isEqual(r1.date_arrive));
 		}
 	
 
