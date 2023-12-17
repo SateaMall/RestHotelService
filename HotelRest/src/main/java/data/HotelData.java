@@ -31,7 +31,7 @@ public class HotelData {
     }
     @Bean
     public CommandLineRunner initDatabaseHotel(HotelRepository repository){
-        hotel = new Hotel("4 Seasons", "Lux",5, adresse,1L);
+        hotel = new Hotel("4 Seasons", "Lux", 5, adresse, 0L);
         return args -> {
             logger.info("preloading database with " + repository.save(hotel));
         };
