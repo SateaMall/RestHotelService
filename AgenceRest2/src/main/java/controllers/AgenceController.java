@@ -57,7 +57,7 @@ public class AgenceController {
 
 //Test : http://localhost:8081/AgenceService/api/comparable?dateDebut=2023-01-01&dateFin=2023-01-10&nombrePersonnes=5&ville=cologne&etoile=4
     public List<Offre> invokeOffres(LocalDate dateDebut, LocalDate dateFin, int nbrPersonne) throws JsonProcessingException {
-        agence =Arepository.getReferenceById(0L);
+        agence =Arepository.getReferenceById(1L);
         List<Hotel> hotels = Hrepository.findAll();
         List<Offre> offres= new ArrayList<>();
         for(Hotel hotel: hotels) {
